@@ -6,14 +6,14 @@
 
 <ion-content class="ion-padding">
   <ion-card>
-    <ion-card-header>
+    <!-- <ion-card-header>
       <ion-card-title>Observed Inputs</ion-card-title>
       <ion-card-subtitle>ASTM Table 53B → Standard @ 15°C</ion-card-subtitle>
-    </ion-card-header>
+    </ion-card-header> -->
 
     <ion-card-content>
-      <ion-item>
-        <ion-label position="stacked">Observed Temperature (°C)</ion-label>
+      <ion-item class="temperature-input">
+        <ion-label position="stacked">Temperature</ion-label>
         <ion-input
           type="number"
           inputmode="decimal"
@@ -22,28 +22,30 @@
         </ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">Observed Density</ion-label>
+      <ion-item class="density-input">
+        <ion-label position="stacked">Density</ion-label>
         <ion-input
           type="number"
           inputmode="decimal"
           [(ngModel)]="observedDensity"
           placeholder="e.g. 673.4">
         </ion-input>
-        <ion-note slot="helper">Use the same unit as the table (e.g., kg/m³ x 1).</ion-note>
+        <!-- <ion-note slot="helper">Use the same unit as the table (e.g., kg/m³ x 1).</ion-note> -->
       </ion-item>
 
       <ion-button expand="block" class="ion-margin-top" (click)="onConvert()">
-        Convert to 15°C
+        CALCULATE
       </ion-button>
-
+    </ion-card-content>
+      
+    <ion-card-content>
       <ion-item *ngIf="result !== null" class="ion-margin-top">
-        <ion-label>
-          <h2>Standard Density @ 15°C</h2>
-          <p>{{ result }}</p>
+        <ion-label class="standard-density">
+          <h2 class="standard-density-label">Standard Density</h2>
+          <p class="standard-density-value">{{ result }}</p>
         </ion-label>
       </ion-item>
-
+      
       <ion-text color="medium" *ngIf="rangeNote">
         <p class="ion-padding-top">{{ rangeNote }}</p>
       </ion-text>

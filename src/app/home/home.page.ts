@@ -9,8 +9,9 @@ import { ConverterService } from '../services/converter.service';
   standalone: false
 })
 export class HomePage implements OnInit {
-  observedTemp: number | null = null;
-  observedDensity: number | null = null;
+  observedTemp: number | null = 25;
+  observedDensity: number | null = 670
+  ;
   result: number | null = null;
   rangeNote = '';
 
@@ -25,6 +26,8 @@ export class HomePage implements OnInit {
     } catch (e: any) {
       this.presentToast(`Failed to load table: ${e.message || e}`);
     }
+
+    this.onConvert();
   }
 
   async onConvert() {
@@ -38,7 +41,7 @@ export class HomePage implements OnInit {
     try {
       const val = this.converter.convert(this.observedDensity, this.observedTemp);
       this.result = val;
-      this.rangeNote = 'Interpolated from ASTM 53B grid.';
+      // this.rangeNote = 'Interpolated from ASTM 53B grid.';
     } catch (e: any) {
       this.presentToast(e.message || 'Conversion error');
     }
