@@ -1,3 +1,4 @@
+//#region IMPORT
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { ConverterService } from '../services/converter.service';
@@ -10,8 +11,7 @@ import { ConverterService } from '../services/converter.service';
 })
 export class HomePage implements OnInit {
   observedTemp: number | null = 25;
-  observedDensity: number | null = 670
-  ;
+  observedDensity: number | null = 670;
   result: number | null = null;
   rangeNote = '';
 
@@ -40,6 +40,7 @@ export class HomePage implements OnInit {
 
     try {
       const val = this.converter.convert(this.observedDensity, this.observedTemp);
+      
       this.result = val;
       // this.rangeNote = 'Interpolated from ASTM 53B grid.';
     } catch (e: any) {
